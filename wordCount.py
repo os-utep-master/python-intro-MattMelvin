@@ -20,3 +20,9 @@ if __name__ == '__main__':
         text = re.sub(pattern, '', text)
         text = text.lower()
         words = text.split()
+
+    for word in words:
+        if word in dictionary:
+            dictionary[word] += 1
+        else:
+            dictionary[word] = 1
