@@ -9,7 +9,7 @@ import re
 import sys
 
 dictionary = {}
-pattern = r',.:;!?'
+pattern = r'[,.;:!?"]'
 
 input_file = sys.argv[1]
 output_file = sys.argv[2]
@@ -26,3 +26,6 @@ if __name__ == '__main__':
             dictionary[word] += 1
         else:
             dictionary[word] = 1
+
+    sorted_keys = sorted(dictionary.keys())
+    sorted_values = sorted(dictionary.values())
