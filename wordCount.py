@@ -20,13 +20,15 @@ input_file = sys.argv[1]
 output_file = sys.argv[2]
 
 if __name__ == '__main__':
-    # open file, transform text into list of single words
+    # open file and store text
     with open(input_file) as f:
         text = f.read()
-        text = text.lower()
-        text = re.sub(punctuation_pattern, '', text)
-        text = re.sub(hyphen_pattern, ' ', text)
-        words = text.split()
+
+    # transform text into list of single words
+    text = text.lower()
+    text = re.sub(punctuation_pattern, '', text)
+    text = re.sub(hyphen_pattern, ' ', text)
+    words = text.split()
 
     # count occurrences of word in list
     for word in words:
@@ -37,9 +39,8 @@ if __name__ == '__main__':
 
     # store keys and value in separate sorted list
     sorted_keys = sorted(word_count.keys())
-    sorted_values = sorted(word_count.values())
 
     # write keys and values to file in required format
     with open(output_file, 'w') as f:
-        for key, value in zip(sorted_keys, sorted_values):
-            f.write(key + ' ' + str(value) + '\n')
+        for key in sorted_keys:
+            f.write(key + ' ' + str(word_count[key]) + '\n')
