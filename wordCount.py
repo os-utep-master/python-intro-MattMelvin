@@ -29,3 +29,7 @@ if __name__ == '__main__':
 
     sorted_keys = sorted(dictionary.keys())
     sorted_values = sorted(dictionary.values())
+
+    with open(output_file, 'w') as f:
+        for key, value in zip(sorted_keys, sorted_values):
+            f.write(key + ' ' + str(value) + '\n')
